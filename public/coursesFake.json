@@ -1,0 +1,194 @@
+[
+  {
+    "id": 1,
+    "course_code": "CSE",
+    "course_name": "Computer Science and Engineering",
+    "duration": 4,
+    "specialization": ["Software Engineering", "Data Science", "Cybersecurity"],
+    "faculty": ["Prof. Smith", "Prof. Johnson", "Prof. Brown"],
+    "image": "https://i.ibb.co.com/ScNNtRy/cse.png",
+    "difficulty": "4.3",
+    "category": "engineering",
+    "details": {
+      "overview": "Explore the foundations of computer science and engineering, including programming, algorithms, data structures, and software development.",
+      "career_paths": [
+        "Software Engineer",
+        "Data Scientist",
+        "Cybersecurity Analyst"
+      ],
+      "prerequisites": ["High School Math and Science"]
+    }
+  },
+  {
+    "id": 2,
+    "course_code": "EEE",
+    "course_name": "Electrical and Electronics Engineering",
+    "duration": 4,
+    "specialization": ["Power Systems", "Control Systems", "Electronics"],
+    "faculty": ["Prof. Davis", "Prof. Miller", "Prof. Wilson"],
+    "image": "https://i.ibb.co.com/nRMm22V/eee.jpg",
+    "difficulty": "4.5",
+    "category": "engineering",
+    "details": {
+      "overview": "Learn about the principles of electrical and electronic engineering, including circuit analysis, digital systems, and power systems.",
+      "career_paths": [
+        "Electrical Engineer",
+        "Electronics Engineer",
+        "Control Systems Engineer"
+      ],
+      "prerequisites": ["High School Physics and Math"]
+    }
+  },
+  {
+    "id": 3,
+    "course_code": "BBA",
+    "course_name": "Bachelor of Business Administration",
+    "duration": 3,
+    "specialization": ["Finance", "Marketing", "Human Resources"],
+    "faculty": ["Prof. Taylor", "Prof. Anderson", "Prof. Thomas"],
+    "image": "https://i.ibb.co.com/4sJ4RML/bba.jpg",
+    "difficulty": "4.7",
+    "category": "business",
+    "details": {
+      "overview": "Develop essential business skills, including finance, accounting, marketing, and management.",
+      "career_paths": [
+        "Business Analyst",
+        "Marketing Manager",
+        "Human Resources Manager"
+      ],
+      "prerequisites": ["High School Math and English"]
+    }
+  },
+  {
+    "id": 4,
+    "course_code": "ECE",
+    "course_name": "Electronics and Communication Engineering",
+    "duration": 4,
+    "specialization": [
+      "VLSI Design",
+      "Wireless Communication",
+      "Signal Processing"
+    ],
+    "faculty": ["Prof. Moore", "Prof. Jackson", "Prof. Martin"],
+    "image": "https://i.ibb.co.com/KFfBwzp/ece.jpg",
+    "difficulty": "4.4",
+    "category": "engineering",
+    "details": {
+      "overview": "Explore the exciting field of electronics and communication engineering, including circuit design, signal processing, and wireless systems.",
+      "career_paths": [
+        "Electronics Engineer",
+        "Telecommunications Engineer",
+        "RF Engineer"
+      ],
+      "prerequisites": ["High School Physics and Math"]
+    }
+  },
+  {
+    "id": 5,
+    "course_code": "PHA",
+    "course_name": "Pharmacy",
+    "duration": 4,
+    "specialization": ["Pharmaceutics", "Pharmacology", "Clinical Pharmacy"],
+    "faculty": ["Prof. Clark", "Prof. Lewis", "Prof. Robinson"],
+    "image": "https://i.ibb.co.com/QbsmCt2/pha.png",
+    "difficulty": "4.6",
+    "category": "medical",
+    "details": {
+      "overview": "Learn about the science and practice of pharmacy, including drug development, dispensing, and patient care.",
+      "career_paths": [
+        "Pharmacist",
+        "Clinical Pharmacist",
+        "Pharmaceutical Researcher"
+      ],
+      "prerequisites": ["High School Biology and Chemistry"]
+    }
+  },
+  {
+    "id": 6,
+    "course_code": "MTH",
+    "course_name": "Mathematics",
+    "duration": 4,
+    "specialization": ["Calculus", "Linear Algebra", "Statistics"],
+    "faculty": ["Prof. Garcia", "Prof. Walker", "Prof. Lee"],
+    "image": "https://example.com/mth.jpg",
+    "difficulty": "3.8",
+    "category": "science",
+    "details": {
+      "overview": "Study the fundamental concepts of mathematics, including calculus, algebra, and statistics.",
+      "career_paths": ["Mathematician", "Data Scientist", "Actuary"],
+      "prerequisites": ["Strong High School Math Background"]
+    }
+  },
+  {
+    "id": 7,
+    "course_code": "PHY",
+    "course_name": "Physics",
+    "duration": 4,
+    "specialization": ["Mechanics", "Electromagnetism", "Quantum Mechanics"],
+    "faculty": ["Prof. Young", "Prof. Jones", "Prof. Brown"],
+    "image": "https://example.com/phy.jpg",
+    "difficulty": "4.2",
+    "category": "science",
+    "details": {
+      "overview": "Explore the laws of physics, including mechanics, electricity, magnetism, and quantum mechanics.",
+      "career_paths": ["Physicist", "Engineer", "Science Teacher"],
+      "prerequisites": ["Strong High School Physics and Math Background"]
+    }
+  },
+  {
+    "id": 8,
+    "course_code": "HIS",
+    "course_name": "History",
+    "duration": 3,
+    "specialization": ["World History", "American History", "European History"],
+    "faculty": ["Prof. Carter", "Prof. Williams", "Prof. Roberts"],
+    "image": "https://example.com/his.jpg",
+    "difficulty": "3.5",
+    "category": "humanities",
+    "details": {
+      "overview": "Study the past and its impact on the present, exploring different cultures, societies, and historical events.",
+      "career_paths": "Historian, Teacher, Archivist, Museum Curator",
+      "prerequisites": "Strong Writing and Reading Skills"
+    }
+  },
+  {
+    "id": 9,
+    "course_code": "ENG",
+    "course_name": "English Literature",
+    "duration": 3,
+    "specialization": [
+      "British Literature",
+      "American Literature",
+      "World Literature"
+    ],
+    "faculty": ["Prof. Miller", "Prof. Davis", "Prof. Wilson"],
+    "image": "https://example.com/eng.jpg",
+    "difficulty": "3.2",
+    "category": "humanities",
+    "details": {
+      "overview": "Analyze and interpret literary texts from various cultures and time periods.",
+      "career_paths": "English Teacher, Writer, Editor, Librarian",
+      "prerequisites": "Strong Reading and Writing Skills"
+    }
+  },
+  {
+    "id": 10,
+    "course_code": "PSY",
+    "course_name": "Psychology",
+    "duration": 4,
+    "specialization": [
+      "Clinical Psychology",
+      "Cognitive Psychology",
+      "Social Psychology"
+    ],
+    "faculty": ["Prof. Taylor", "Prof. Anderson", "Prof. Thomas"],
+    "image": "https://example.com/psy.jpg",
+    "difficulty": "3.9",
+    "category": "social_science",
+    "details": {
+      "overview": "Explore the human mind and behavior, including cognition, emotion, and social interaction.",
+      "career_paths": "Psychologist, Counselor, Social Worker, Human Resources",
+      "prerequisites": "Strong Interest in Human Behavior and Psychology"
+    }
+  }
+]
