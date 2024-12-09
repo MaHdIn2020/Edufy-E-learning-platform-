@@ -24,7 +24,7 @@ const AddCourse = () => {
     // console.log(courseData);
 
     // send the course data to the server
-    fetch("https://edufy-server.vercel.app/courses", {
+    fetch("http://localhost:4000/courses", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -19,7 +19,7 @@ const UpdateCourse = () => {
     e.preventDefault();
 
     // Send updated course data to the server
-    fetch(`https://edufy-server.vercel.app/courses/${course._id}`, {
+    fetch(`http://localhost:4000/courses/${course._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -36,7 +36,7 @@ const UpdateCourse = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
-          navigate("/"); // Redirect to home or courses page after successful update
+          navigate("/");
         }
       });
   };

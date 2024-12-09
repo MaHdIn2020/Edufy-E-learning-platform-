@@ -1,10 +1,13 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import Heading from "./Heading";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Home = () => {
+  const { userType } = useContext(AuthContext);
+  // console.log(userType);
   const allCourses = useLoaderData();
   const [courses, setCourses] = useState(allCourses);
 
@@ -29,7 +32,7 @@ const Home = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://edufy-server.vercel.app/courses/${_id}`, {
+        fetch(`http://localhost:4000/courses/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -123,16 +126,20 @@ const Home = () => {
                   </button>
                 </Link>
 
-                <Link to={`updateCourse/${course._id}`}>
-                  <button className="btn bg-yellow-300">Edit</button>
-                </Link>
+                {userType === "Admin" && (
+                  <Link to={`updateCourse/${course._id}`}>
+                    <button className="btn bg-yellow-300">Edit</button>
+                  </Link>
+                )}
 
-                <button
-                  onClick={() => handleDelete(course._id)}
-                  className="btn bg-red-600 text-white"
-                >
-                  Remove
-                </button>
+                {userType === "Admin" && (
+                  <button
+                    onClick={() => handleDelete(course._id)}
+                    className="btn bg-red-600 text-white"
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
             </div>
           </div>

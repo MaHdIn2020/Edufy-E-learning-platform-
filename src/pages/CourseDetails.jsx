@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const CourseDetails = () => {
+  const { user, userType } = useContext(AuthContext);
   const course = useLoaderData();
 
   const {
@@ -17,12 +21,25 @@ const CourseDetails = () => {
   } = course;
 
   const handleEnrollment = () => {
-    Swal.fire({
-      title: "Success!!!",
-      text: "Course enrolled successfully",
-      icon: "success",
-      confirmButtonText: "Cool",
-    });
+    const { _id, ...course_data } = course;
+    const enrolledCourseData = {
+      ...course_data,
+      userEmail: user.email,
+    };
+
+    fetch("http://localhost:4000/enrolledCourses", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(enrolledCourseData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire("Course enrolled successfully");
+        }
+      });
   };
 
   return (
@@ -77,14 +94,16 @@ const CourseDetails = () => {
             <p className="text-gray-700">{details}</p>
           </div>
 
-          <div className="flex justify-center gap-6">
-            <button
-              onClick={handleEnrollment}
-              className="btn bg-blue-500 text-white"
-            >
-              Enroll
-            </button>
-          </div>
+          {userType === "Student" && (
+            <div className="flex justify-center gap-6">
+              <button
+                onClick={handleEnrollment}
+                className="btn bg-blue-500 text-white"
+              >
+                Enroll
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

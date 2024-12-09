@@ -10,6 +10,9 @@ import UpdateCourse from "../pages/UpdateCourse";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import EnrolledCourses from "../pages/EnrolledCourses";
+import LearnCourse from "../pages/LearnCourse";
+import ShowModules from "../pages/ShowModules";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://edufy-server.vercel.app/courses"),
+        loader: () => fetch("http://localhost:4000/courses"),
       },
       {
         path: "/instructors",
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <Users></Users>,
-        loader: () => fetch("https://edufy-server.vercel.app/users"),
+        loader: () => fetch("http://localhost:4000/users"),
       },
       {
         path: "/addCourse",
@@ -39,13 +42,26 @@ const router = createBrowserRouter([
         path: "updateCourse/:id",
         element: <UpdateCourse></UpdateCourse>,
         loader: ({ params }) =>
-          fetch(`https://edufy-server.vercel.app/courses/${params.id}`),
+          fetch(`http://localhost:4000/courses/${params.id}`),
       },
       {
         path: "/courseDetails/:id",
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
-          fetch(`https://edufy-server.vercel.app/courses/${params.id}`),
+          fetch(`http://localhost:4000/courses/${params.id}`),
+      },
+
+      {
+        path: "/enrolled-courses",
+        element: <EnrolledCourses></EnrolledCourses>,
+      },
+      {
+        path: "/showMoudules/:id",
+        element: <ShowModules></ShowModules>,
+      },
+      {
+        path: "/learn-course/:id",
+        element: <LearnCourse></LearnCourse>,
       },
     ],
   },

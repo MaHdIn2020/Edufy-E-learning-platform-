@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { signInUser, setUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -23,13 +26,28 @@ const Login = () => {
     }
 
     signInUser(email, password)
-      // eslint-disable-next-line no-unused-vars
       .then((result) => {
-        // console.log("User signed in:", result.user);
         setFormData({ email: "", password: "" });
         setError("");
+        setUser(result.user); // Set user in context/state
+        toast.success("User logged in successfully!");
 
-        toast.success(`User logged in successfully`);
+        // console.log(email);
+        // Fetch userType
+        // fetch(`http://localhost:4000/userType?email=${email}`)
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     // console.log("User Type:", data);
+        //     // toast.info(`Welcome, ${data.userType}!`); // Display the userType
+        //     // setUserType(data.userType);
+        //     setUserType(data[0].userType);
+        //   })
+        //   .catch((err) => {
+        //     console.error("Error fetching user type:", err.message);
+        //     // toast.error(err.message); // Display specific error message
+        //   });
+
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => {
         setError(err.message || "Failed to login. Please try again.");

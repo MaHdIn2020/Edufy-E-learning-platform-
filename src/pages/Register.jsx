@@ -1,9 +1,12 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     name: "",
     imageUrl: "",
@@ -20,6 +23,8 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // console.log(userData.name, userData.imageUrl);
+
     createUser(userData.email, userData.password)
       // eslint-disable-next-line no-unused-vars
       .then((result) => {
@@ -30,7 +35,7 @@ const Register = () => {
         const { password, ...userWithoutPassword } = userData;
 
         // Save the user to the database
-        fetch("https://edufy-server.vercel.app/users", {
+        fetch("http://localhost:4000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -58,6 +63,26 @@ const Register = () => {
             }
           })
           .catch((error) => console.error("Error registering user:", error));
+
+        // console.log(userData.name, userData.photoURL);
+
+        updateUserProfile({
+          displayName: userData.name,
+          photoURL: userData.imageUrl,
+        })
+          .then(() => {
+            toast.success(
+              `Registration successful! for ${result.user.displayName}`
+            );
+            navigate("/auth/login");
+          })
+          .catch((err) => {
+            toast.error(
+              "Error updating profile. Please try again.",
+              err.message
+            );
+          });
+        setUser(result.user);
       })
       .catch((err) => {
         console.error("Registration failed: ", err);
