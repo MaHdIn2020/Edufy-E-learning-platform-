@@ -16,7 +16,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userType, setUserType] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [progress, setProgress] = useState(null);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -49,28 +48,20 @@ const AuthProvider = ({ children }) => {
     updateUserProfile,
     userType,
     setUserType,
-    progress,
-    setProgress,
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      // console.log("object is now unsubscribed");
-
       if (currentUser?.email) {
         fetch(`http://localhost:4000/userType?email=${currentUser.email}`)
           .then((res) => res.json())
           .then((data) => {
-            // console.log("User Type:", data);
-            // toast.info(`Welcome, ${data.userType}!`); // Display the userType
-            // setUserType(data.userType);
             setUserType(data[0].userType);
           })
           .catch((err) => {
             console.error("Error fetching user type:", err.message);
-            // toast.error(err.message); // Display specific error message
           });
       } else {
         setUserType(null);

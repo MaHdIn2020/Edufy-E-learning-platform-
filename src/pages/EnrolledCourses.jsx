@@ -31,12 +31,11 @@ const EnrolledCourses = () => {
             <p>{course.details.slice(0, 100)}...</p>
             <button
               className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md"
-              onClick={
-                // () => navigate(`/learn-course/${course._id}`, { state: course })
-                () => navigate(`/showMoudules/${course._id}`, { state: course })
+              onClick={() =>
+                navigate(`/showMoudules/${course._id}`, { state: course })
               }
             >
-              Start Course
+              Go to course page
             </button>
           </div>
         ))}

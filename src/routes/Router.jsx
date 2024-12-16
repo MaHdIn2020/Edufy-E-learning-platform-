@@ -13,6 +13,7 @@ import Register from "../pages/Register";
 import EnrolledCourses from "../pages/EnrolledCourses";
 import LearnCourse from "../pages/LearnCourse";
 import ShowModules from "../pages/ShowModules";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -31,16 +32,28 @@ const router = createBrowserRouter([
       },
       {
         path: "/users",
-        element: <Users></Users>,
+        element: (
+          <PrivateRouter>
+            <Users></Users>
+          </PrivateRouter>
+        ),
         loader: () => fetch("http://localhost:4000/users"),
       },
       {
         path: "/addCourse",
-        element: <AddCourse></AddCourse>,
+        element: (
+          <PrivateRouter>
+            <AddCourse></AddCourse>
+          </PrivateRouter>
+        ),
       },
       {
         path: "updateCourse/:id",
-        element: <UpdateCourse></UpdateCourse>,
+        element: (
+          <PrivateRouter>
+            <UpdateCourse></UpdateCourse>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:4000/courses/${params.id}`),
       },
@@ -53,15 +66,27 @@ const router = createBrowserRouter([
 
       {
         path: "/enrolled-courses",
-        element: <EnrolledCourses></EnrolledCourses>,
+        element: (
+          <PrivateRouter>
+            <EnrolledCourses></EnrolledCourses>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/showMoudules/:id",
-        element: <ShowModules></ShowModules>,
+        element: (
+          <PrivateRouter>
+            <ShowModules></ShowModules>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/learn-course/:id",
-        element: <LearnCourse></LearnCourse>,
+        element: (
+          <PrivateRouter>
+            <LearnCourse></LearnCourse>,
+          </PrivateRouter>
+        ),
       },
     ],
   },
