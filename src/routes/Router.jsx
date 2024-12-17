@@ -29,7 +29,9 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
+        loader: () => fetch("http://localhost:4000/instructors"),
       },
+      
       {
         path: "/users",
         element: (
@@ -88,6 +90,7 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
       },
+      
     ],
   },
   {
