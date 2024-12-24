@@ -24,7 +24,7 @@ const AddCourse = () => {
     // console.log(courseData);
 
     // send the course data to the server
-    fetch("http://localhost:4000/courses", {
+    fetch("https://edufy-server.vercel.app/courses", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ const AddCourse = () => {
             <label className="block text-gray-700 font-medium mb-2">
               Course Code
             </label>
-            <input
+            {/* <input
               type="text"
               name="course_code"
               value={courseData.course_code}
@@ -66,7 +66,30 @@ const AddCourse = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter course code"
               required
-            />
+            /> */}
+            {/* ------------------------------------------------------ */}
+            <select
+              name="course_code"
+              value={courseData.course_code}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="" disabled>
+                Select Course Code
+              </option>
+              <option value="CSE">CSE</option>
+              <option value="EEE">EEE</option>
+              <option value="BBA">BBA</option>
+              <option value="ECE">ECE</option>
+              <option value="PHA">PHA</option>
+              <option value="MTH">MTH</option>
+              <option value="PHY">PHY</option>
+              <option value="HIS">HIS</option>
+              <option value="ENG">ENG</option>
+              <option value="PSY">PSY</option>
+            </select>
+            {/* ------------------------------------------------------ */}
           </div>
           {/* Course Name */}
           <div>

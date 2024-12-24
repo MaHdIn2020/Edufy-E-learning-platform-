@@ -15,7 +15,7 @@ const ShowModules = () => {
       courseName: course.course_code,
     };
 
-    fetch(`http://localhost:4000/progress`, {
+    fetch(`https://edufy-server.vercel.app/progress`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -128,7 +128,7 @@ export default ShowModules;
 //       courseName: course.course_code,
 //     };
 
-//     fetch(`http://localhost:4000/progress`, {
+//     fetch(`https://edufy-server.vercel.app/progress`, {
 //       method: "POST",
 //       headers: {
 //         "content-type": "application/json",

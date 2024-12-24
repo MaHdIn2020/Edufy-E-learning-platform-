@@ -19,7 +19,7 @@ const UpdateCourse = () => {
     e.preventDefault();
 
     // Send updated course data to the server
-    fetch(`http://localhost:4000/courses/${course._id}`, {
+    fetch(`https://edufy-server.vercel.app/courses/${course._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -34,7 +34,7 @@ const Login = () => {
 
         // console.log(email);
         // Fetch userType
-        // fetch(`http://localhost:4000/userType?email=${email}`)
+        // fetch(`https://edufy-server.vercel.app/userType?email=${email}`)
         //   .then((res) => res.json())
         //   .then((data) => {
         //     // console.log("User Type:", data);

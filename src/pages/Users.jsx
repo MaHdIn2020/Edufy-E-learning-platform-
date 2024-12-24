@@ -18,7 +18,7 @@ const Users = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // delete user from the database
-        fetch(`http://localhost:4000/users/${id}`, {
+        fetch(`https://edufy-server.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

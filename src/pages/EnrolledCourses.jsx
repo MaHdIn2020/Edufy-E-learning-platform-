@@ -8,7 +8,7 @@ const EnrolledCourses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:4000/enrolledCourses?email=${user.email}`)
+    fetch(`https://edufy-server.vercel.app/enrolledCourses?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setEnrolledCourses(data));
   }, [user.email]);

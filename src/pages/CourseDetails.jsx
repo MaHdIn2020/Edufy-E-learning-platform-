@@ -27,7 +27,7 @@ const CourseDetails = () => {
       userEmail: user.email,
     };
 
-    fetch("http://localhost:4000/enrolledCourses", {
+    fetch("https://edufy-server.vercel.app/enrolledCourses", {
       method: "POST",
       headers: {
         "content-type": "application/json",

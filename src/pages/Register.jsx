@@ -35,7 +35,7 @@ const Register = () => {
         const { password, ...userWithoutPassword } = userData;
 
         // Save the user to the database
-        fetch("http://localhost:4000/users", {
+        fetch("https://edufy-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Banner from "./Banner";
 import Heading from "./Heading";
 import { useContext, useState } from "react";
@@ -6,8 +6,8 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const Home = () => {
-  const { userType } = useContext(AuthContext);
-  // console.log(userType);
+  const { userType, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const allCourses = useLoaderData();
   const [courses, setCourses] = useState(allCourses);
 
@@ -32,7 +32,7 @@ const Home = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:4000/courses/${_id}`, {
+        fetch(`https://edufy-server.vercel.app/courses/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -57,6 +57,39 @@ const Home = () => {
   };
 
   //----------------------------------------------------------------
+
+  const handleBookmark = (id, course_code, course_name, difficulty, email) => {
+    console.log("book", id, course_code, course_name, difficulty, email);
+
+    const courseData = {
+      courseId: id,
+      courseName: course_name,
+      courseCode: course_code,
+      difficulty: difficulty,
+      bookmarkedEmail: email,
+    };
+
+    fetch("https://edufy-server.vercel.app/bookmarks", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(courseData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!!!",
+            text: "Course bookmarked successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
 
   return (
     <div>
@@ -92,7 +125,7 @@ const Home = () => {
 
       {/* Courses Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
-        {courses.map((course) => (
+        {courses.slice(0, 3).map((course) => (
           <div
             key={course._id}
             className="bg-white shadow-md rounded-lg overflow-hidden"
@@ -118,13 +151,33 @@ const Home = () => {
               <p className="text-gray-700 text-sm mb-2">
                 Category: {course.category}
               </p>
+
               {/* Learn More Button */}
-              <div className="flex justify-center gap-6">
+              <div className="flex justify-center items-center gap-6">
                 <Link to={`/courseDetails/${course._id}`}>
                   <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Learn More
                   </button>
                 </Link>
+
+                {userType === "Student" && (
+                  <div>
+                    <button
+                      onClick={() =>
+                        handleBookmark(
+                          course._id,
+                          course.course_code,
+                          course.course_name,
+                          course.difficulty,
+                          user.email
+                        )
+                      }
+                      className="btn bg-blue-400 text-white"
+                    >
+                      Bookmark
+                    </button>
+                  </div>
+                )}
 
                 {userType === "Admin" && (
                   <Link to={`updateCourse/${course._id}`}>
@@ -144,6 +197,12 @@ const Home = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="text-center my-8">
+        <button onClick={() => navigate("/allCourses")} className="btn">
+          Show All Courses
+        </button>
       </div>
     </div>
   );

@@ -14,6 +14,13 @@ import EnrolledCourses from "../pages/EnrolledCourses";
 import LearnCourse from "../pages/LearnCourse";
 import ShowModules from "../pages/ShowModules";
 import PrivateRouter from "./PrivateRouter";
+import Reviews from "../pages/Reviews";
+import TrendingCourses from "../pages/TrendingCourses";
+import AllCourses from "../pages/AllCourses";
+import Bookmarks from "../pages/Bookmarks";
+import Announcement from "../pages/Announcement";
+import ShowAnnouncement from "../pages/ShowAnnouncement";
+import MyNotes from "../pages/MyNotes";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +31,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:4000/courses"),
+        loader: () => fetch("https://edufy-server.vercel.app/courses"),
       },
+      {
+        path: "/allCourses",
+        element: <AllCourses></AllCourses>,
+      },
+
       {
         path: "/instructors",
         element: <Instructors></Instructors>,
+        loader: () => fetch("https://edufy-server.vercel.app/courses"),
       },
       {
         path: "/users",
@@ -37,7 +50,15 @@ const router = createBrowserRouter([
             <Users></Users>
           </PrivateRouter>
         ),
-        loader: () => fetch("http://localhost:4000/users"),
+        loader: () => fetch("https://edufy-server.vercel.app/users"),
+      },
+      {
+        path: "/myNotes",
+        element: (
+          <PrivateRouter>
+            <MyNotes></MyNotes>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/addCourse",
@@ -55,13 +76,13 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/courses/${params.id}`),
+          fetch(`https://edufy-server.vercel.app/courses/${params.id}`),
       },
       {
         path: "/courseDetails/:id",
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:4000/courses/${params.id}`),
+          fetch(`https://edufy-server.vercel.app/courses/${params.id}`),
       },
 
       {
@@ -85,6 +106,48 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <LearnCourse></LearnCourse>,
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/reviews",
+        element: (
+          <PrivateRouter>
+            <Reviews></Reviews>
+          </PrivateRouter>
+        ),
+        loader: () => fetch(`https://edufy-server.vercel.app/reviews`),
+      },
+      {
+        path: "/highRatedCourses",
+        element: (
+          <PrivateRouter>
+            <TrendingCourses></TrendingCourses>
+          </PrivateRouter>
+        ),
+        loader: () => fetch(`https://edufy-server.vercel.app/highRatedCourses`),
+      },
+      {
+        path: "/bookmarks",
+        element: (
+          <PrivateRouter>
+            <Bookmarks></Bookmarks>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/announcement",
+        element: (
+          <PrivateRouter>
+            <Announcement></Announcement>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/showAnnouncement",
+        element: (
+          <PrivateRouter>
+            <ShowAnnouncement></ShowAnnouncement>
           </PrivateRouter>
         ),
       },

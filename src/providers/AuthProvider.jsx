@@ -55,7 +55,9 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
       if (currentUser?.email) {
-        fetch(`http://localhost:4000/userType?email=${currentUser.email}`)
+        fetch(
+          `https://edufy-server.vercel.app/userType?email=${currentUser.email}`
+        )
           .then((res) => res.json())
           .then((data) => {
             setUserType(data[0].userType);
