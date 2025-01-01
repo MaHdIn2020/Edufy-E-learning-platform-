@@ -21,6 +21,7 @@ import Bookmarks from "../pages/Bookmarks";
 import Announcement from "../pages/Announcement";
 import ShowAnnouncement from "../pages/ShowAnnouncement";
 import MyNotes from "../pages/MyNotes";
+import Quizzes from "../pages/Quizzes";
 
 const router = createBrowserRouter([
   {
@@ -148,6 +149,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <ShowAnnouncement></ShowAnnouncement>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/quizzes",
+        element: (
+          <PrivateRouter>
+            <Quizzes></Quizzes>
           </PrivateRouter>
         ),
       },

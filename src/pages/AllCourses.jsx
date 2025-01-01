@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const AllCourses = () => {
-  const { userType } = useContext(AuthContext);
+  const { user, userType } = useContext(AuthContext);
   const [courses, setCourses] = useState([]);
   const [search, setSearch] = useState("");
 
@@ -48,6 +48,39 @@ const AllCourses = () => {
           });
       }
     });
+  };
+
+  const handleBookmark = (id, course_code, course_name, difficulty, email) => {
+    console.log("book", id, course_code, course_name, difficulty, email);
+
+    const courseData = {
+      courseId: id,
+      courseName: course_name,
+      courseCode: course_code,
+      difficulty: difficulty,
+      bookmarkedEmail: email,
+    };
+
+    fetch("https://edufy-server.vercel.app/bookmarks", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(courseData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!!!",
+            text: "Course bookmarked successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
 
   return (
@@ -112,7 +145,18 @@ const AllCourses = () => {
 
                   {userType === "Student" && (
                     <div>
-                      <button className="btn bg-blue-400 text-white">
+                      <button
+                        onClick={() =>
+                          handleBookmark(
+                            course._id,
+                            course.course_code,
+                            course.course_name,
+                            course.difficulty,
+                            user.email
+                          )
+                        }
+                        className="btn bg-blue-400 text-white"
+                      >
                         Bookmark
                       </button>
                     </div>

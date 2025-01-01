@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const AddCourse = () => {
+  const navigate = useNavigate();
   const [courseData, setCourseData] = useState({
     course_code: "",
     course_name: "",
@@ -42,6 +44,8 @@ const AddCourse = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
+
+          navigate("/allCourses");
         }
       });
   };

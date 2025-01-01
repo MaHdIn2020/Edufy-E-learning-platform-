@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { toPng } from "html-to-image"; // For downloading the certificate as an image
 import Progressbar from "../components/Progressbar";
@@ -90,6 +90,7 @@ const LearnCourse = () => {
   const [showCertificate, setShowCertificate] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [notes, setNotes] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
@@ -226,6 +227,21 @@ const LearnCourse = () => {
         </div>
       </div>
       {/* ------------------------------------------------------------ */}
+
+      {/* -----------------quizzes section starts-------------------- */}
+
+      {progress && (
+        <div className="text-center">
+          <button
+            onClick={() => navigate("/quizzes", { state: course.course_code })}
+            className="btn btn-secondary"
+          >
+            Take Quizzes
+          </button>
+        </div>
+      )}
+
+      {/* -----------------quizzes section ends-------------------- */}
 
       {/* --------------------Taking notes start------------------- */}
 
