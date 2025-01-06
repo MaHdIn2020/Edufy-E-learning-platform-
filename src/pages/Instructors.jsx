@@ -7,15 +7,15 @@ const Instructors = () => {
     fetch("http://localhost:4000/instructors")
       .then((res) => res.json())
       .then((data) => {
-        console.log("Fetched Instructors:", data); // Debug: Check if data is fetched
+        console.log("Fetched Instructors Data:", data); // Debug: Verifying data structure
         setInstructors(data);
       })
       .catch((error) => console.error("Error fetching instructors:", error));
   }, []);
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>Our Instructors</h1>
+    <div style={{ padding: "2.5rem" }}> {/* Updated padding */}
+      <h1 style={{ textAlign: "center", marginBottom: "1rem" }}>Meet Our Instructors</h1> {/* Updated heading text */}
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2rem" }}>
         {instructors.map((instructor) => (
           <div
@@ -30,7 +30,7 @@ const Instructors = () => {
             }}
           >
             <img
-              src={instructor.imageUrl}
+              src={instructor.imageUrl || "https://via.placeholder.com/300"} {/* Added fallback image */}
               alt={instructor.name}
               style={{ width: "100%", height: "200px", objectFit: "cover" }}
             />
