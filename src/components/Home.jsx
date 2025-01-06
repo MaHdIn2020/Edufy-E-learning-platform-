@@ -87,6 +87,8 @@ const Home = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
+
+          navigate("/bookmarks");
         }
       });
   };

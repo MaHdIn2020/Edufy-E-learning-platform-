@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import Heading from "../components/Heading";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 
 const AllCourses = () => {
   const { user, userType } = useContext(AuthContext);
   const [courses, setCourses] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`https://edufy-server.vercel.app/courses?searchParams=${search}`)
@@ -79,6 +80,7 @@ const AllCourses = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
+          navigate("/bookmarks");
         }
       });
   };
