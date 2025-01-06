@@ -130,9 +130,9 @@ const LearnCourse = () => {
       }),
     }).then(() => {
       Swal.fire("Review Submitted!", "", "success");
-      setReview({ rating: 0, comment: "" });
-      navigate("/reviews");
     });
+    setReview({ rating: 0, comment: "" });
+    navigate("/reviews");
     // console.log(review);
   };
 
@@ -170,9 +170,9 @@ const LearnCourse = () => {
       }),
     }).then(() => {
       Swal.fire("Note Submitted!", "", "success");
-      setNotes("");
-      navigate("/myNotes");
     });
+    setNotes("");
+    navigate("/myNotes");
   };
 
   return (
