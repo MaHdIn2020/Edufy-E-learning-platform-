@@ -112,6 +112,11 @@ const Navbar = () => {
                   <NavLink to={"/myNotes"}>MyNotes</NavLink>
                 </li>
               )}
+              {userType && (
+                <li>
+                  <NavLink to={"/myProfile"}>My Profile</NavLink>
+                </li>
+              )}
               {userType === "Admin" && (
                 <>
                   <li>

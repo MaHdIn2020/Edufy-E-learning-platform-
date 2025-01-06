@@ -83,7 +83,7 @@ Ensure you have the following installed:
    Create a `.env` file in the root directory and add the following:
 
    ```env
-   REACT_APP_API_URL=http://localhost:4000
+   REACT_APP_API_URL=https://edufy-server.vercel.app
    ```
 
 4. **Start the Application**
@@ -98,7 +98,7 @@ Ensure you have the following installed:
      ```
 
 5. **Open the Application**
-   Open your browser and navigate to `http://localhost:4000`.
+   Open your browser and navigate to `https://edufy-server.vercel.app`.
 
 ## Developer Info
 

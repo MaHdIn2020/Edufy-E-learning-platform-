@@ -112,8 +112,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center mt-8 text-gray-400 text-sm">
-        &copy; {new Date().getFullYear()} Your Website Name. All rights
-        reserved.
+        &copy; {new Date().getFullYear()} Edufy. All rights reserved.
       </div>
     </footer>
   );
